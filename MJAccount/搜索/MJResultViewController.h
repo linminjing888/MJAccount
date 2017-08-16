@@ -8,6 +8,8 @@
 
 #import "MJBaseViewController.h"
 
-@interface MJResultViewController : MJBaseViewController
-
+@class MJDataModel;
+typedef void(^searchBlock)(MJDataModel * model);
+@interface MJResultViewController : MJBaseViewController<UISearchResultsUpdating>
+@property (nonatomic,copy) searchBlock selectResult;
 @end

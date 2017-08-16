@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSObject (MJSortKey)
+/********* 为方便排序,新增一个属性 *************/
+@property (nonatomic,copy)NSString *key;
 
 @end

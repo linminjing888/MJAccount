@@ -7,7 +7,10 @@
 //
 
 #import "MJBaseViewController.h"
+#import "MJDataModel.h"
 
 @interface MJDetailViewController : MJBaseViewController
+
+@property (strong, nonatomic)MJDataModel *model;
 
 @end

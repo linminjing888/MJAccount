@@ -26,7 +26,7 @@
 @implementation LZPasswordViewController
 - (void)dealloc {
     
-    LZLog(@"%@--dealloc",NSStringFromClass([self class]));
+    MJLog(@"%@--dealloc",NSStringFromClass([self class]));
 }
 
 - (void)viewWillAppear:(BOOL)animated {

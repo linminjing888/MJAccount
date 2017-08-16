@@ -22,7 +22,7 @@
 typedef NS_ENUM(NSInteger, LZGestureType) {
     
     LZGestureTypeSetting = 0,
-    LZGestureTypeVerifying,
+    LZGestureTypeVerifying,  //验证
     LZGestureTypeUpdate,
     LZGestureTypeScreen,
 };

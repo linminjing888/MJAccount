@@ -13,8 +13,7 @@
 #import "LZWarnLabel.h"
 #import "PCCircleViewConst.h"
 #import "LZGestureTool.h"
-#import "TouchIdUnlock.h"
-
+#import "MJTouchId.h"
 #import "LZPasswordViewController.h"
 #import "LZNumberTool.h"
 #import "LZGestureScreen.h"
@@ -43,7 +42,7 @@ static NSString *firstGesturePsw;
 @implementation LZGestureViewController
 - (void)dealloc {
     
-    LZLog(@"%@--dealloc",NSStringFromClass([self class]));
+    MJLog(@"%@--dealloc",NSStringFromClass([self class]));
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -79,7 +78,7 @@ static NSString *firstGesturePsw;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = [UIColor colorWithRed:13/255.0 green:52/255.0 blue:89/255.0 alpha:1.0];
+    self.view.backgroundColor = [UIColor whiteColor];//[UIColor colorWithRed:13/255.0 green:52/255.0 blue:89/255.0 alpha:1.0];
     
     if (self.type == LZGestureTypeScreen) {
         
@@ -104,6 +103,7 @@ static NSString *firstGesturePsw;
     backButton.frame = CGRectMake(10, 20, 40, 44);
     backButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [backButton setTitle:@"╳" forState:UIControlStateNormal];
+    [backButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backButton];
 }
@@ -162,7 +162,7 @@ static NSString *firstGesturePsw;
     if (_resetButton == nil) {
         
         UIButton *resetBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        resetBtn.frame = CGRectMake(LZSCREEN_WIDTH - 50, 20, 40, 44);
+        resetBtn.frame = CGRectMake(MJSCREENW - 50, 20, 40, 44);
         resetBtn.hidden = YES;
         resetBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [resetBtn setTitle:@"重置" forState:UIControlStateNormal];
@@ -190,8 +190,8 @@ static NSString *firstGesturePsw;
     if (_msgLabel == nil) {
         
         _msgLabel = [[LZWarnLabel alloc]init];
-        _msgLabel.bounds = CGRectMake(0, 0, LZSCREEN_WIDTH, 14);
-        _msgLabel.center = CGPointMake(LZSCREEN_WIDTH/2.0, CGRectGetMinY(self.lockView.frame) - 30);
+        _msgLabel.bounds = CGRectMake(0, 0, MJSCREENW, 14);
+        _msgLabel.center = CGPointMake(MJSCREENW/2.0, CGRectGetMinY(self.lockView.frame) - 30);
         
         [self.view addSubview:_msgLabel];
     }
@@ -218,7 +218,7 @@ static NSString *firstGesturePsw;
         _forgetButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _forgetButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [_forgetButton setTitle:@"忘记密码?" forState:UIControlStateNormal];
-        [_forgetButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_forgetButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         _forgetButton.frame = CGRectMake(20, CGRectGetMaxY(self.lockView.frame) + 20, 100, 14);
         
         [_forgetButton addTarget:self action:@selector(forgetButtonClick) forControlEvents:UIControlEventTouchUpInside];
@@ -240,7 +240,7 @@ static NSString *firstGesturePsw;
         }];
         
     } else {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"警告⚠️" message:@"您没有设置数字密码,无法通过数字密码重置!如果无法使用指纹解锁,很抱歉,您无法使用相关功能!" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"警告" message:@"您没有设置数字密码,无法通过数字密码重置!如果无法使用指纹解锁,很抱歉,您无法使用相关功能!" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"我知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
@@ -261,7 +261,7 @@ static NSString *firstGesturePsw;
         _otherButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [_otherButton setImage:[UIImage imageNamed:@"gesture_unlock"] forState:UIControlStateNormal];
         [_otherButton setTitle:@" 指纹解锁" forState:UIControlStateNormal];
-        [_otherButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_otherButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         _otherButton.frame = CGRectMake(kScreenW - 120, CGRectGetMaxY(self.lockView.frame) + 20, 100, 14);
         
         [_otherButton addTarget:self action:@selector(otherButtonClick) forControlEvents:UIControlEventTouchUpInside];
@@ -273,7 +273,7 @@ static NSString *firstGesturePsw;
 #warning 如果有多种验证方式,可在此进行切换
 - (void)otherButtonClick {
     
-    [[TouchIdUnlock sharedInstance] startVerifyTouchID:^{
+    [[MJTouchId sharedInstance] startVerifyTouchID:^{
         
 //        [self back];
         
@@ -342,7 +342,7 @@ static NSString *firstGesturePsw;
 - (void)gestureScreen {
     
     [self forgetButton];
-    if ([[TouchIdUnlock sharedInstance] canVerifyTouchID]) {
+    if ([[MJTouchId sharedInstance] canVerifyTouchID]) {
         
         [self otherButton];
     }

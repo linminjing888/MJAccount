@@ -10,4 +10,6 @@
 
 @interface MJSearchHeaderView : UITableViewHeaderFooterView
 
+@property (nonatomic,strong)UILabel *titleLabel;
+
 @end

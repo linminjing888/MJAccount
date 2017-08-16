@@ -7,7 +7,20 @@
 //
 
 #import "MJGroupModel.h"
+#import "MJStringTool.h"
 
 @implementation MJGroupModel
 
+-(NSString*)groupName{
+    if (_groupName == nil) {
+        return @"默认分组";
+    }
+    return _groupName;
+}
+-(NSString*)identifier{
+    if (_identifier == nil) {
+        _identifier = [MJStringTool creatRedomMD5String];
+    }
+    return _identifier;
+}
 @end

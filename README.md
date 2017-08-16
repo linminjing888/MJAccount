@@ -1,11 +1,12 @@
 # MJAccount
 
 
-![images](https://github.com/JingJing-Lin/MJAccount/blob/master/password.jpg)
+![password](https://github.com/JingJing-Lin/MJAccount/blob/master/password.jpg)
 
-![images](https://github.com/JingJing-Lin/MJAccount/blob/master/detail.jpg)
+![detail](https://github.com/JingJing-Lin/MJAccount/blob/master/detail.jpg)
 
 账号、密码保存工具~
+
 1.多层加密，不怕别人玩手机。
 2.iCloud 同步备份。
 

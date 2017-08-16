@@ -10,4 +10,7 @@
 
 @interface MJGroupModel : NSObject
 
+@property (copy, nonatomic) NSString *groupName;
+@property (copy, nonatomic) NSString *identifier;
+
 @end

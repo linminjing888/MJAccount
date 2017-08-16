@@ -7,7 +7,8 @@
 //
 
 #import "MJBaseViewController.h"
-
+#import "MJGroupModel.h"
 @interface MJGroupSingleController : MJBaseViewController
 
+@property (nonatomic,strong) MJGroupModel * groupModel;
 @end

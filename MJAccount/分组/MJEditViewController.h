@@ -10,4 +10,7 @@
 
 @interface MJEditViewController : MJBaseViewController
 
+@property (strong, nonatomic)MJDataModel *model;
+@property (strong, nonatomic)MJGroupModel *defaultGroup;
+
 @end

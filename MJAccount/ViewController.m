@@ -16,9 +16,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+   
+    /// 正式
+    self.bannerView.adUnitID = @"ca-app-pub-8977527621627800/7495726503";
+    /// 测试
+//    self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
+    self.bannerView.rootViewController = self;
+    
+    GADRequest *request = [GADRequest request];
+    [self.bannerView loadRequest:request];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

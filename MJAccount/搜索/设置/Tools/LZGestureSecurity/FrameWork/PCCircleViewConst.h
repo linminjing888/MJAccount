@@ -19,7 +19,7 @@
 /**
  *  普通状态下外空心圆颜色
  */
-#define CircleStateNormalOutsideColor rgba(241,241,241,1)
+#define CircleStateNormalOutsideColor rgba(200,200,200,1)
 
 /**
  *  选中状态下外空心圆颜色
@@ -141,7 +141,7 @@
 /**
  *  普通状态下文字提示的颜色
  */
-#define textColorNormalState rgba(241,241,241,1)
+#define textColorNormalState rgba(150,150,150,1)
 
 /**
  *  警告状态下文字提示的颜色
